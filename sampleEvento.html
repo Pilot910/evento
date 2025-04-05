@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Invitación al Evento</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(#000428, #004e92);
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .fecha {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      color: #ccc;
+    }
+
+    .contador {
+      font-size: 2rem;
+      margin: 30px 0;
+    }
+
+    .detalles {
+      margin: 30px 0;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .boton {
+      display: inline-block;
+      background: #00c6ff;
+      color: black;
+      padding: 12px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 15px #00c6ff80;
+    }
+
+    iframe {
+      border: 0;
+      width: 100%;
+      height: 300px;
+      margin-top: 30px;
+      border-radius: 20px;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>¡Estás Invitado!</h1>
+  <p class="fecha">Sábado, 20 de Abril de 2025 - 6:00 PM</p>
+
+  <div class="contador" id="contador">Cargando cuenta regresiva...</div>
+
+  <p class="detalles">
+    Acompáñanos en esta celebración especial llena de alegría, música y buenos momentos.  
+    <br><br>
+    Lugar: Salón de Eventos Jardín Encantado, CDMX.
+  </p>
+
+  <a class="boton" href="https://wa.me/5215512345678?text=Confirmo%20mi%20asistencia%20al%20evento" target="_blank">
+    Confirmar Asistencia
+  </a>
+
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.590896212748!2d-99.1332083850911!3d19.432607786888596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDI1JzU3LjQiTiA5OcKwMDgnMDAuMCJX!5e0!3m2!1ses!2smx!4v1618861867645!5m2!1ses!2smx"
+    allowfullscreen=""
+    loading="lazy">
+  </iframe>
+
+  <footer>
+    Powered by NFC Eventos | TuNombre © 2025
+  </footer>
+
+  <script>
+    // Cuenta regresiva
+    const evento = new Date("April 20, 2025 18:00:00").getTime();
+    const cuenta = setInterval(() => {
+      const ahora = new Date().getTime();
+      const diferencia = evento - ahora;
+
+      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+      document.getElementById("contador").innerHTML =
+        `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+
+      if (diferencia < 0) {
+        clearInterval(cuenta);
+        document.getElementById("contador").innerHTML = "¡El evento ya comenzó!";
+      }
+    }, 1000);
+  </script>
+
+</body>
+</html>
